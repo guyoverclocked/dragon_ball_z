@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dragon Ball Z Home</title>
+    <style>
+@media only screen and (max-width: 480px) {
+  meta[name=viewport] {
+    zoom: 1.4;
+  }
+}
+  /* Set background gradient */
+body {
+  background: linear-gradient(to bottom, #00FF7F, #0bec0b);
+}
+/* Style the heading */
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #333;
+  text-shadow: 2px 2px 4px #ccc;
+  font-family: "Arial", sans-serif;
+}
+
+/* Style the navbar */
+nav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+nav a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Arial", sans-serif;
+}
+
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the buttons */
+button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 10px;
+  border-radius: 10px;
+  display: block;
+  width: 90%;
+  max-width: 350px;
+  margin: 10px auto;
+  font-family: "Arial", sans-serif;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+ </style>
+</head>
+<body>
+	<h1>Dragon Ball Z Home</h1>
+	{% for episode in range(1, result1) %}
+		<a href="/player?episode={{ episode }}" style="text-decoration: none;"><button>Episode {{ episode }}</button></a>
+	{% endfor %}
+</body>
+</html>
