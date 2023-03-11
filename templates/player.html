@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dragon Ball Z Player</title>
+    <style>
+        body {
+	background-color: #d3effc;
+}
+
+h1, h3 {
+	text-align: center;
+	color: #333;
+	font-size: 3rem;
+	font-family: "Arial", sans-serif;
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+	margin: 50px auto 0;
+	max-width: 800px;
+}
+
+.video-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+	.video-container {
+		padding-bottom: 0;
+		padding-top: 0;
+		margin: 10px auto 0;
+	}
+}
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 10px;
+  border-radius: 10px;
+  display: inline-block; /* set display property to inline-block */
+  width: 45%; /* reduce width to fit both buttons on one line */
+  max-width: 350px;
+  font-family: "Arial", sans-serif;
+  text-decoration: none;
+}
+
+/* Add a container to hold the buttons */
+.button-container {
+  text-align: center; /* center the buttons within the container */
+}
+
+/* Use a class to differentiate between the buttons */
+.primary-btn {
+  background-color: #333;
+  color: #fff;
+}
+
+.secondary-btn {
+  background-color: #333;
+  color: #fff;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+.nextt {
+	text-align: center; /* center the buttons within the container */
+}
+
+    </style>
+</head>
+<body>
+	{% if episode %}
+		<h1>Episode {{ episode }}</h1>
+		<div class="video-container">
+			<iframe src="{{ link }}" width = 600px, height = 600px allowfullscreen></iframe>
+		</div>
+	{% else %}
+		<h1>No episode selected.</h1>
+	{% endif %}
+	<div class="button-container">
+	<a href="/player?episode={{ link_prev }}" style="text-decoration: none;"><button class="secondary-btn">Previous Episode</button></a>
+	<a href="/player?episode={{ link_next }}" style="text-decoration: none;"><button class="primary-btn">Next Episode</button></a>
+	</div>
+	<h3>Next Episodes:</h3>
+	<div class="nextt">
+	{% for x in range(cur_epi + 1, result1) %}
+		<a href="/player?episode={{ x }}" style="text-decoration: none;"><button>Episode {{ x }}</button></a>
+	{% endfor %}
+	</div>
+</body>
+</html>
